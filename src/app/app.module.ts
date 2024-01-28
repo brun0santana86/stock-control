@@ -12,6 +12,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,11 +24,12 @@ import { ToastModule } from 'primeng/toast';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     //primeng imports
     CardModule,
     InputTextModule,
     ButtonModule,
-    ToastModule
+    ToastModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
