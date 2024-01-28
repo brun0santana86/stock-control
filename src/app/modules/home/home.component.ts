@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { UserService } from '../../services/user/user.service';
+import { SignupUserRequest } from '../../models/interfaces/user/SignUpUserRequest';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +17,14 @@ export class HomeComponent {
   });
 
   signupForm = this.formBuilder.group({
-    nameSignup: ['', Validators.required],
-    emailSignup: ['', Validators.required],
-    passwordSignup: ['', Validators.required],
+    name: ['', Validators.required],
+    email: ['', Validators.required],
+    password: ['', Validators.required],
   });
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private UserService: UserService) {}
 
     //metodo submit para o form de login
     onSubmitLoginForm(): void {
@@ -29,6 +33,17 @@ export class HomeComponent {
 
     //metodo submit para o form de signup
     onSubmitSignupForm(): void {
-      console.log("dados do form", this.signupForm.value);
+      if(this.signupForm.value && this.signupForm.valid) {
+        this.UserService.signupUser(this.signupForm.value as SignupUserRequest)
+        .subscribe({
+          next: (response) => {
+            if(response){
+              alert("usuario teste criado!");
+            }
+          },
+          error: (err) => console.log(err),
+        });
+
+      }
     }
 }
