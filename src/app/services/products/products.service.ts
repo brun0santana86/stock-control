@@ -19,6 +19,7 @@ export class ProductsService {
       Authorization: `Bearer ${this.JWT_TOKEN}`,
     })
   }
+  setProductsData: any;
 
   constructor(private http: HttpClient, private cookie: CookieService) { }
 
