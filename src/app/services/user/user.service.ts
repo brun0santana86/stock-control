@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { SignupUserRequest } from 'src/app/models/interfaces/user/SignUpUserRequest';
 import { SignupUserResponse } from 'src/app/models/interfaces/user/SignupUserResponse';
@@ -14,7 +15,7 @@ export class UserService {
 
   private API_URL = environment.API_URL;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookie: CookieService) { }
 
   signupUser(requestDatas: SignupUserRequest): Observable<SignupUserResponse> {
     return this.http.post<SignupUserResponse>(
@@ -26,5 +27,12 @@ export class UserService {
     return this.http.post<AuthResponse>(`${this.API_URL}/auth`, requestDatas);
   }
 
+  //metodo para validar se usuario esta logado para uso em guarda de rotas
+  isLoggedIn(): boolean {
+    //verificar se o usuario possui um token ou um cookie na aplicacao
+    const JWT_TOKEN = this.cookie.get("USER_INFO");
+
+    return JWT_TOKEN ? true : false;
+  }
 
 }

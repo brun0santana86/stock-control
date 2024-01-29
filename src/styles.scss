@@ -171,3 +171,6 @@
     width: 50%;
   }
 }
+
+body > app-root > app-dashboard-home > app-toolbar-navigation > p-toolbar > div > p-toolbar > div{display: none!important;}
+body > app-root > app-dashboard-home > app-toolbar-navigation > p-toolbar > div > p-toolbar{display: none!important;}
