@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { ProductsService } from 'src/app/services/products/products.service';
-import { GetAllProductsResponse } from '../../../../models/interfaces/products/request/response/GetAllProductsResponse';
+import { GetAllProductsResponse } from '../../../../models/interfaces/products/response/GetAllProductsResponse';
 import { Subject, takeUntil } from 'rxjs';
 import { ChartData, ChartOptions } from 'chart.js';
+import { ProductsService } from 'src/app/services/products/products.service';
 
 
 @Component({
@@ -35,7 +35,7 @@ export class DashboardHomeComponent implements OnInit, OnDestroy{
         if (response.length > 0){
           this.productsList = response;
           console.log('DADOS DOS PRODUTOS', this.productsList);
-          this.productsDtService.setProductsData(this.productsList);
+          //this.productsDtService.setProductsDatas(this.productsList);
           this.setProductsChartConfig();
         }
       },
@@ -62,6 +62,7 @@ export class DashboardHomeComponent implements OnInit, OnDestroy{
         labels: this.productsList.map((element) => element?.name),
         datasets: [
           {
+          label: 'Quantidade',
           backgroundColor: documentStyle.getPropertyValue('--indigo-400'),
           borderColor: documentStyle.getPropertyValue('--indigo-400'),
           hoverBackgroundColor: documentStyle.getPropertyValue('--indigo-500'),

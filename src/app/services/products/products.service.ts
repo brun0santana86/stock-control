@@ -4,7 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
 import { TagContentType } from '@angular/compiler';
 import { Observable, map } from 'rxjs';
-import { GetAllProductsResponse } from 'src/app/models/interfaces/products/request/response/GetAllProductsResponse';
+import { GetAllProductsResponse } from 'src/app/models/interfaces/products/response/GetAllProductsResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class ProductsService {
       Authorization: `Bearer ${this.JWT_TOKEN}`,
     })
   }
-  setProductsData: any;
+  setProductsDatas: any;
 
   constructor(private http: HttpClient, private cookie: CookieService) { }
 
