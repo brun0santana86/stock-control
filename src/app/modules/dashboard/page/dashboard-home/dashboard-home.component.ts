@@ -13,7 +13,7 @@ import { ProductsService } from 'src/app/services/products/products.service';
 })
 export class DashboardHomeComponent implements OnInit, OnDestroy{
 
-    private destroy$ = new Subject<void>();
+  private readonly destroy$: Subject<void> = new Subject();
     public productsList: Array<GetAllProductsResponse> = [];
     public productsChartDatas!: ChartData;
     public productsChartOptions!: ChartOptions;

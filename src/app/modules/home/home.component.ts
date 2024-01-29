@@ -14,7 +14,7 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnDestroy{
-  private destroy$ = new Subject<void>();
+  private readonly destroy$: Subject<void> = new Subject();
   loginCard = true;
 
   loginForm = this.formBuilder.group({
