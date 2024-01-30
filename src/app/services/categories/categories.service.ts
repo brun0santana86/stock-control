@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { GetCategoriesResponse } from 'src/app/models/interfaces/categories/responses/GetCategoriesResponse';
+import { EditProductRequest } from 'src/app/models/interfaces/products/request/EditProductRequest';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -25,6 +26,13 @@ export class CategoriesService {
   getAllCategories(): Observable<Array<GetCategoriesResponse>>{
     return this.http.get<Array<GetCategoriesResponse>>(
       `${this.API_URL}/categories`,
+      this.httpOptions
+    );
+  }
+
+  editProduct(requestDatas: EditProductRequest): Observable<void> {
+    return this.http.put<void>(
+      `${this.API_URL}/product/edit`,
       this.httpOptions
     );
   }
