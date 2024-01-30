@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CategoriesHomeComponent } from './page/categories-home/categories-home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CATEGORIES_ROUTES } from './categories.routing';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -19,17 +17,15 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TooltipModule } from 'primeng/tooltip';
 import { ConfirmationService } from 'primeng/api';
+
+import { CategoriesHomeComponent } from './page/categories-home/categories-home.component';
+import { CATEGORIES_ROUTES } from './categories.routing';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { CategoriesTableComponent } from './components/categories-table/categories-table.component';
 import { CategoryFormComponent } from './components/category-form/category-form.component';
 
-
-
 @NgModule({
-  declarations: [
-    CategoriesHomeComponent,
-    CategoriesTableComponent,
-    CategoryFormComponent
-  ],
+  declarations: [CategoriesHomeComponent, CategoriesTableComponent, CategoryFormComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -37,7 +33,7 @@ import { CategoryFormComponent } from './components/category-form/category-form.
     RouterModule.forChild(CATEGORIES_ROUTES),
     SharedModule,
     HttpClientModule,
-    //prime ng
+    // PrimeNg
     CardModule,
     ButtonModule,
     TableModule,
@@ -49,9 +45,8 @@ import { CategoryFormComponent } from './components/category-form/category-form.
     DynamicDialogModule,
     DropdownModule,
     ConfirmDialogModule,
-    TooltipModule
+    TooltipModule,
   ],
-
-  providers: [DialogService, ConfirmationService]
+  providers: [DialogService, ConfirmationService],
 })
-export class CategoriesModule { }
+export class CategoriesModule {}

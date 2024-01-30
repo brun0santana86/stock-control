@@ -4,18 +4,17 @@ import { Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthGuard {
-
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) {}
 
   canActivate():
-  | Observable<boolean | UrlTree>
-  | Promise<boolean | UrlTree>
-  | boolean
-  | UrlTree {
-    if(!this.userService.isLoggedIn()){
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    if (!this.userService.isLoggedIn()) {
       this.router.navigate(['/home']);
       return false;
     }
@@ -23,7 +22,4 @@ export class AuthGuard {
     this.userService.isLoggedIn();
     return true;
   }
-
-
-
 }
